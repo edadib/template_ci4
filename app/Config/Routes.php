@@ -10,6 +10,7 @@ use App\Controllers\APIController;
 // $routes->get('/', 'Home::index');
 
 $routes->get('/', 'Dashboard::index'); // cara routing single
+$routes->get('Data', 'Dashboard::Data_example'); // cara routing single
 
 $routes->group('Dashboard', static function ($routes) { // cara routing group
     $routes->get('', 'Dashboard::index');

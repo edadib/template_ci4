@@ -8,6 +8,14 @@
         </a>
     </li>
     <li class="nav-item">
+        <a href="<?php echo base_url('Data'); ?>" class="nav-link <?php if($system_setting['sideMenuDetails']['parentmenu'] == 'Data') {echo $system_setting['sideMenuDetails']['menu'];} ?>">
+            <i class="nav-icon fa fa-file"></i>
+            <p>
+                Data Example
+            </p>
+        </a>
+    </li>
+    <li class="nav-item">
         <a href="#" class="nav-link">
             <i class="nav-icon fa fa-file"></i>
             <p>
