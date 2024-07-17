@@ -104,4 +104,63 @@ class Dashboard extends BaseController
 
         return view('Layout/Template', $data_content);
     }
+
+    public function testingmail()
+    {
+        $data_content['system_setting'] = array (
+            'menubar' => "Layout/MenuBar",
+            'page' => "Manage/Test/test_email",
+            'title' => "Dashboard",
+            'breadcrumbs' => $this->breadcrumbs,
+            'layout' => $this->layout,
+            'menu' => $this->menu,
+            'sideMenuDetails' => array (
+                'parentmenu' => "Home",
+                'childmenu' => "",
+                'childmenu2' => "",
+                'menu' => "active",
+                'submenu' => "",
+            ),
+        );
+
+        // return view('Manage/Test/TestPage', $data_content);
+        return view('Layout/Template', $data_content);
+    }
+    
+    function SendEmail()
+    {
+        // dd($_POST);
+        $emails = $this->email;
+        $message_alert = "";
+        // dd($emails);
+        if(($_POST['email_sender'] != null && $_POST['email_sender'] != "") && ($_POST['email_receiver'] != null && $_POST['email_receiver'] != ""))
+        {    
+            $emails->setFrom('noreply_eCuti@usm.my', 'ECUTIV3');
+            $emails->setTo($_POST['email_receiver']);
+            $emails->setCC('adib.farhan@usm.my');
+            // $emails->setBCC('them@their-example.com');
+            
+            $emails->setSubject('Email Testing CI4');
+            $emails->setMessage($_POST['content_email']);
+            
+            $result = $emails->send();
+            if($result)
+            {
+                $message_alert = "Berjaya";
+                return redirect()->to('Dashboard/Mail_Test')->with('message', $message_alert);
+            }
+            else
+            {
+                $message_alert = "X berjaya";
+                dd($emails->printDebugger(['Headers']));
+            }
+        }
+        else
+        {
+            $message_alert = "X dk sender dan receiver";
+            return redirect()->to('Dashboard/Mail_Test')->with('message', $message_alert);
+        }
+        // $emails->printDebugger();
+        // dd($emails->printDebugger(['Headers']));
+    }
 }

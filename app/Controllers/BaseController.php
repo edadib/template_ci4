@@ -23,6 +23,7 @@ use App\Models\M_system;
 abstract class BaseController extends Controller
 {
     protected $session;
+    protected $email;
     /**
      * Instance of the main Request object.
      *
@@ -56,6 +57,7 @@ abstract class BaseController extends Controller
         // Do Not Edit This Line
         parent::initController($request, $response, $logger);
         $this->session = \Config\Services::session(); 
+        $this->email = \Config\Services::email();
 
         // Preload any models, libraries, etc, here.
         

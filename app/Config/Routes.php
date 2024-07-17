@@ -11,6 +11,8 @@ use App\Controllers\APIController;
 
 $routes->get('/', 'Dashboard::index'); // cara routing single
 $routes->get('Data', 'Dashboard::Data_example'); // cara routing single
+$routes->get('Dashboard/Mail_Test', 'Dashboard::testingmail');
+$routes->post('Dashboard/SendEmail', [Dashboard::class, 'SendEmail']);
 
 $routes->group('Dashboard', static function ($routes) { // cara routing group
     $routes->get('', 'Dashboard::index');
