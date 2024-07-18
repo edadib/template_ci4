@@ -18,17 +18,17 @@ class Email extends BaseConfig
     /**
      * The mail sending protocol: mail, sendmail, smtp
      */
-    public string $protocol = 'smtp';
+    public string $protocol = 'mail';
 
     /**
      * The server path to Sendmail.
      */
-    public string $mailPath = '';
+    public string $mailPath = '/usr/sbin/sendmail';
 
     /**
      * SMTP Server Hostname
      */
-    public string $SMTPHost = 'tufail.usm.my';
+    public string $SMTPHost = '';
 
     /**
      * SMTP Username
@@ -62,7 +62,7 @@ class Email extends BaseConfig
      *             to the server. 'ssl' means implicit SSL. Connection on port
      *             465 should set this to ''.
      */
-    public string $SMTPCrypto = '';
+    public string $SMTPCrypto = 'tls';
 
     /**
      * Enable word-wrap
@@ -77,13 +77,12 @@ class Email extends BaseConfig
     /**
      * Type of mail, either 'text' or 'html'
      */
-    public string $mailType = 'html';
+    public string $mailType = 'text';
 
     /**
      * Character set (utf-8, iso-8859-1, etc.)
      */
-    // public string $charset = 'iso-8859-1';
-    public string $charset = 'utf-8';
+    public string $charset = 'UTF-8';
 
     /**
      * Whether to validate the email address
