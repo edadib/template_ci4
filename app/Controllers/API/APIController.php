@@ -58,6 +58,36 @@ class APIController extends ResourceController
         return $this->setResponseFormat('json')->respond($response);
     }
 
+    // call api
+    function retrieve_data()
+    {
+        $user_id = '920202075225';
+        $url = 'https://ossdev3.usm.my/ecutiv3/public/index.php/ECuti/UserProfilCuti';
+        $var = array(
+            'id' => $user_id,
+        );
+
+        $body = json_encode($var);
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => $body,
+        ));
+
+        $response = curl_exec($curl);
+        curl_close($curl);
+        $raw = json_decode($response);
+        dd($raw);
+    }
+
     /**
      * Return an array of resource objects, themselves in array format.
      *
