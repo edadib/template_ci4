@@ -50,4 +50,12 @@ class M_testing extends Model
         }
         return $result;
     }
+
+    function load_file_uploaded()
+    {
+        $ListFiles = directory_map(WRITEPATH.'uploads/DokumenSokongan/');
+        // $ListFiles = array();
+        // dd($ListFiles);
+        return($ListFiles);
+    }
 }

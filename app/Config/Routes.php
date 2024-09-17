@@ -18,6 +18,8 @@ $routes->group('Dashboard', static function ($routes) { // cara routing group
     $routes->get('', 'Dashboard::index');
     $routes->get('Main', [Dashboard::class, 'Main']); // jika nk guna cara ni, kena panggil controller menggunakan use App\Controllers\Dashboard; 
     $routes->get('Testing', 'Dashboard::testing');
+    $routes->get('File', [Dashboard::class, 'file_form']);
+    $routes->post('UploadFile', [Dashboard::class, 'Upload_File']);
 });
 
 $routes->group('API', static function ($routes) {

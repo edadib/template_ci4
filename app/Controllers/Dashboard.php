@@ -163,4 +163,72 @@ class Dashboard extends BaseController
         // $emails->printDebugger();
         // dd($emails->printDebugger(['Headers']));
     }
+
+    public function file_form()
+    {
+        $data_content['system_setting'] = array (
+            'menubar' => "Layout/MenuBar",
+            'page' => "Manage/Test/test_upload",
+            'title' => "Dashboard",
+            'breadcrumbs' => $this->breadcrumbs,
+            'layout' => $this->layout,
+            'menu' => $this->menu,
+            'sideMenuDetails' => array (
+                'parentmenu' => "Admin",
+                'childmenu' => "test",
+                'childmenu2' => "upload",
+                'menu' => "active",
+                'submenu' => "",
+            ),
+        );
+
+        
+        $list_files = $this->M_testing->load_file_uploaded();
+        $data_content['list_files']    = $list_files;
+
+        return view('Layout/Template', $data_content);
+    }
+    
+    function Upload_File()
+    {
+        $filepath = "";
+        $validationRule = [
+            'file_content' => [
+                'rules' => [
+                    'uploaded[file_content]',
+                    'mime_in[file_content,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf]',
+                ],
+            ],
+        ];
+        if (! $this->validateData([], $validationRule)) {
+            $data_content['errors']    = $this->validator->getErrors();
+            dd($data_content['errors']);
+
+            // return view('Layout/Template', $data_content);
+        }
+        else
+        {
+            $files = $this->request->getFiles();
+            if(array_key_exists('file_content',$files))
+            {
+                foreach($files['file_content'] as $fail)
+                {
+                    if ($fail->isValid() && ! $fail->hasMoved()) 
+                    {
+                        // d(WRITEPATH);
+                        $newName = $fail->getRandomName();
+                        $fail->move(WRITEPATH . 'uploads/DokumenSokongan/', $newName);
+                        $filepath = WRITEPATH . 'uploads/DokumenSokongan/' . $newName;
+                    }
+                    // if ($fail->isValid())
+                    // {
+                    //     $newName = $fail->getRandomName();
+                    //     $result_store = $fail->store('DokumenSokongan/', $newName);
+                    //     d($result_store);
+                    // }
+                }
+            }
+        }
+        return redirect()->to('Dashboard/File')->with('message', $filepath);
+    }
 }

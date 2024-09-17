@@ -7,7 +7,7 @@
     <div class="login-box">
         <div class="card">
             <div class="card-header text-center">
-                <h3><i><b>ECUTI</b></i></h3>
+                <h3><i><b>Template CI4</b></i></h3>
             </div>
             <div class="card-body">
 

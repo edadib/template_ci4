@@ -2,7 +2,7 @@
         <div class="col-md-12">
             <div class="card card-gray-dark">
                 <div class="card-header">
-                    <h4>Data Presentation</h4>
+                    <h4>Data Loaded Using Active Record (ORM)</h4>
                 </div>
                 <div class="card-body text-center">
                     <table id="list_data1" class="table table-bordered table-hover">
@@ -23,8 +23,13 @@
                             <?php endforeach; ?>
                         </tbody>
                     </table>
-                    <br>
-                    <br>
+                </div>
+            </div>
+            <div class="card card-gray-dark">
+                <div class="card-header">
+                    <h4>Data Loaded Using Native SQL</h4>
+                </div>
+                <div class="card-body text-center">
                     <table id="list_data2" class="table table-bordered table-hover">
                         <thead>
                             <tr>
