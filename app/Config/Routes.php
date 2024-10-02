@@ -23,6 +23,7 @@ $routes->group('Dashboard', static function ($routes) { // cara routing group
 });
 
 $routes->group('API', static function ($routes) {
+    $routes->get('View', [APIController::class, 'ViewAPI']);
     $routes->get('Contoh', [APIController::class, 'ContohAPI']);
     $routes->post('ContohPost', [APIController::class, 'ContohAPIPost']);
 });

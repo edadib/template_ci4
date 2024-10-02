@@ -31,6 +31,16 @@
             </p>
         </a>
     </li>
+    
+    <li class="nav-item">
+        <a href="<?php echo base_url('API/'); ?>" class="nav-link" target="_blank">
+            <i class="nav-icon fa fa-upload"></i>
+            <p>
+                Test Call API
+            </p>
+        </a>
+    </li>
+
     <li class="nav-item">
         <a href="#" class="nav-link">
             <i class="nav-icon fa fa-file"></i>
