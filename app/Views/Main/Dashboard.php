@@ -7,7 +7,7 @@
         All rights reserved.
         <br>
         <div>
-            <b>Version</b> 1.0.0
+            <b>Version</b> 1.0.1
         </div>
     </div>
 </div>
